@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { Inter } from "next/font/google";
 
+
+
+
+
+
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"]
@@ -139,6 +144,9 @@ export function ContactoForm() {
             </p>
           )}
         </form>
+        <span>Se preferir ligar...00244 248 200 287</span>
+      
+        
     
 
     </main>
