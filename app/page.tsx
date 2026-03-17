@@ -58,6 +58,7 @@ export default function Home() {
           >
             Documentation
           </a>
+          <a href="/contato"> contato</a>
         </div>
       </main>
     </div>
