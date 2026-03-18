@@ -55,7 +55,7 @@ export function ContactoForm() {
     <main >
      
       
-        <form onSubmit={handleSubmit} className="gap-6 items-center justify-center grid">
+        <form onSubmit={handleSubmit} className="gap-6 items-center justify-center px-3 rounded-3xl shadow-2xl bg-white py-4 grid">
           <h2 className={`${inter.className} text-[48px] text-black font-[600] tracking-[-0.02em] leading-tight`}>
   Envie sua mensagem
 </h2>
@@ -65,7 +65,7 @@ export function ContactoForm() {
             placeholder="Seu email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-3 bg-white outline-none text-black"
+            className="w-full p-3 bg-white outline-1 rounded text-black"
             required
           />
         
@@ -75,7 +75,7 @@ export function ContactoForm() {
             placeholder="Nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
-             className="w-full p-3 bg-white outline-none text-black"
+             className="w-full p-3 bg-white outline-1 rounded text-black"
             required
           />
 
@@ -84,7 +84,7 @@ export function ContactoForm() {
             placeholder="Company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-             className="w-full p-3 bg-white outline-none text-black"
+             className="w-full p-3 bg-white outline-1 rounded text-black"
             required
           />
           <input
@@ -92,7 +92,7 @@ export function ContactoForm() {
             placeholder="Assunto"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-             className="w-full p-3 bg-white outline-none text-black"
+             className="w-full p-3 bg-white outline-1 rounded text-black"
             required
           />
           
@@ -102,7 +102,7 @@ export function ContactoForm() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={5}
-             className="w-full p-3 bg-white outline-none text-black"
+             className="w-full p-3 bg-white outline-1 rounded text-black"
             required
           />
         <div className="w-full flex justify-end">
@@ -144,7 +144,6 @@ export function ContactoForm() {
             </p>
           )}
         </form>
-        <span>Se preferir ligar...00244 248 200 287</span>
       
         
     

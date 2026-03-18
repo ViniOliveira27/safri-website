@@ -47,11 +47,11 @@ export default function ContatoHero() {
           </div>
         </div>
 
-        {/* BOTÃO */}
+       <a href="#mapa">
         <button className="mt-10 bg-red-600 text-white px-6 py-3 font-semibold hover:bg-red-700 transition">
-          Conhecer serviços
+          Conheça Nossos Endereços
         </button>
-
+        </a>  
       </div>
     </div>
   );
