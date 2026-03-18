@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export function ContatoForm() {
   const [email, setEmail] = useState("");
@@ -42,66 +48,86 @@ export function ContatoForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full rounded-2xl border border-[var(--card-border)] bg-[var(--background)] p-6 shadow-lg md:p-8">
-      <h2 className="text-3xl font-black tracking-tight text-[var(--foreground)]">Envie sua mensagem</h2>
+    <main className="w-full">
+      <form onSubmit={handleSubmit} className="grid items-center justify-center gap-6">
+        <h2 className={`${inter.className} text-[48px] font-[600] leading-tight tracking-[-0.02em] text-black`}>
+          Envie sua mensagem
+        </h2>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-        <input
-          type="email"
-          placeholder="Seu email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full rounded-md border border-[var(--card-border)] bg-[var(--off-white)] p-3 text-[var(--foreground)] outline-none focus:border-[var(--safri-red-light)]"
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
+          <input
+            type="email"
+            placeholder="Seu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full bg-white p-3 text-black outline-none"
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full bg-white p-3 text-black outline-none"
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Company"
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            className="w-full bg-white p-3 text-black outline-none"
+            required
+          />
+
+          <input
+            type="text"
+            placeholder="Assunto"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            className="w-full bg-white p-3 text-black outline-none"
+            required
+          />
+        </div>
+
+        <textarea
+          placeholder="Mensagem"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={5}
+          className="w-full bg-white p-3 text-black outline-none"
           required
         />
-        <input
-          type="text"
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="w-full rounded-md border border-[var(--card-border)] bg-[var(--off-white)] p-3 text-[var(--foreground)] outline-none focus:border-[var(--safri-red-light)]"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Empresa"
-          value={company}
-          onChange={(e) => setCompany(e.target.value)}
-          className="w-full rounded-md border border-[var(--card-border)] bg-[var(--off-white)] p-3 text-[var(--foreground)] outline-none focus:border-[var(--safri-red-light)]"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Assunto"
-          value={subject}
-          onChange={(e) => setSubject(e.target.value)}
-          className="w-full rounded-md border border-[var(--card-border)] bg-[var(--off-white)] p-3 text-[var(--foreground)] outline-none focus:border-[var(--safri-red-light)]"
-          required
-        />
-      </div>
 
-      <textarea
-        placeholder="Mensagem"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        rows={5}
-        className="mt-4 w-full rounded-md border border-[var(--card-border)] bg-[var(--off-white)] p-3 text-[var(--foreground)] outline-none focus:border-[var(--safri-red-light)]"
-        required
-      />
+        <div className="flex w-full justify-end">
+          <button
+            type="submit"
+            className={`
+              ${inter.className}
+              w-1/2 bg-black py-3 text-[12px] font-[600] leading-tight tracking-[-0.02em] text-white
+              transition-all duration-300 hover:bg-gray-300 hover:text-red-700
+              ${loading ? "cursor-not-allowed opacity-70" : ""}
+            `}
+            disabled={loading}
+          >
+            {loading ? "Enviando..." : "Enviar Mensagem"}
+          </button>
+        </div>
 
-      <div className="mt-4 flex justify-end">
-        <button
-          type="submit"
-          className={`rounded-lg bg-[var(--safri-red)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--safri-red-dark)] ${loading ? "cursor-not-allowed opacity-70" : ""}`}
-          disabled={loading}
-        >
-          {loading ? "Enviando..." : "Enviar Mensagem"}
-        </button>
-      </div>
+        {status ? (
+          <p
+            className={`mt-4 rounded-lg p-3 text-center ${
+              status.includes("sucesso") ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+            }`}
+          >
+            {status}
+          </p>
+        ) : null}
+      </form>
 
-      {status ? (
-        <p className="mt-4 rounded-md bg-[var(--background-alt)] p-3 text-sm text-[var(--text-secondary)]">{status}</p>
-      ) : null}
-    </form>
+      <span className="mt-4 inline-block text-black">Se preferir ligar...00244 248 200 287</span>
+    </main>
   );
 }
