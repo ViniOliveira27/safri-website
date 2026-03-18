@@ -132,7 +132,7 @@ export function BannerCarousel() {
             <div className={`absolute inset-0 bg-gradient-to-br ${banners[current].gradient}`} />
             <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white/8 to-transparent" />
 
-            <div className="relative z-10 flex h-full items-end p-6 md:p-10">
+            <div className="relative z-10 flex h-full items-end p-5 sm:p-6 md:p-10">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={banners[current].title}
@@ -145,13 +145,13 @@ export function BannerCarousel() {
                 <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white">
                   {banners[current].label}
                 </p>
-                <h3 className="mt-4 text-2xl font-black leading-tight text-white md:text-5xl">
+                <h3 className="mt-4 text-xl font-black leading-tight text-white sm:text-2xl md:text-5xl">
                   {banners[current].title}
                 </h3>
-                <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
+                <p className="mt-3 max-w-2xl text-xs leading-6 text-slate-200 sm:text-sm md:text-base md:leading-7">
                   {banners[current].subtitle}
                 </p>
-                <p className="mt-5 inline-flex rounded-lg border border-white/20 bg-[var(--safri-red)] px-4 py-2 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[var(--safri-red-dark)]">
+                <p className="mt-4 inline-flex rounded-lg border border-white/20 bg-[var(--safri-red)] px-3 py-2 text-xs font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[var(--safri-red-dark)] sm:px-4 sm:text-sm">
                   {banners[current].cta}
                 </p>
                 </motion.div>
@@ -169,7 +169,7 @@ export function BannerCarousel() {
 
           <button
             onClick={prev}
-            className="absolute left-4 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 p-2 text-white transition hover:bg-black/60 hover:shadow-lg"
+            className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 p-2 text-white transition hover:bg-black/60 hover:shadow-lg sm:left-4"
             aria-label="Anterior"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -177,7 +177,7 @@ export function BannerCarousel() {
 
           <button
             onClick={next}
-            className="absolute right-4 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 p-2 text-white transition hover:bg-black/60 hover:shadow-lg"
+            className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/40 p-2 text-white transition hover:bg-black/60 hover:shadow-lg sm:right-4"
             aria-label="Próximo"
           >
             <ChevronRight className="h-5 w-5" />
@@ -189,7 +189,7 @@ export function BannerCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.45, delay: 0.05 }}
-          className="mt-4 grid grid-cols-5 gap-2 md:gap-3"
+          className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5 md:gap-3"
         >
           {banners.map((banner, index) => (
             <button

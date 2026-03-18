@@ -3,12 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Building2, ChevronDown, Factory, Handshake, Landmark, Truck, Wrench } from "lucide-react";
+import { Building2, ChevronDown, Factory, Handshake, Landmark, Menu, Truck, Wrench, X } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Navbar() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,6 +22,13 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/25 bg-[var(--background)]/72 shadow-[0_14px_42px_rgba(8,16,32,0.16)] backdrop-blur-2xl transition-all duration-500">
@@ -79,13 +87,52 @@ export function Navbar() {
           </div>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <ThemeToggle />
-          <Link href="/contato">
+          <Link href="/contato" className="hidden sm:inline-flex">
             <Button className="rounded-full bg-[#024f3c] px-7 shadow-lg shadow-[#024f3c]/30 transition hover:-translate-y-0.5 hover:bg-[#03624a]">Solicitar Proposta</Button>
           </Link>
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--card-border)] bg-[var(--off-white)] text-[var(--foreground)] transition hover:border-[var(--safri-red)] lg:hidden"
+            aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
+
+      {mobileMenuOpen ? (
+        <div className="lg:hidden">
+          <div className="fixed inset-0 z-40 bg-slate-950/40" onClick={() => setMobileMenuOpen(false)} />
+          <div className="absolute left-0 right-0 top-full z-50 border-b border-[var(--card-border)] bg-[var(--off-white)]/95 p-4 shadow-2xl backdrop-blur-xl">
+            <nav className="grid gap-2 text-sm font-semibold text-[var(--text-secondary)]">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Home
+              </Link>
+              <Link href="/#sobre" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Sobre Nós
+              </Link>
+              <Link href="/#servicos" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Serviços
+              </Link>
+              <Link href="/#direcao" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Diretoria
+              </Link>
+              <Link href="/contato" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Contato
+              </Link>
+            </nav>
+
+            <Link href="/contato" onClick={() => setMobileMenuOpen(false)} className="mt-3 inline-flex w-full">
+              <Button className="w-full rounded-xl bg-[#024f3c] py-3 text-center shadow-lg shadow-[#024f3c]/30 hover:bg-[#03624a]">
+                Solicitar Proposta
+              </Button>
+            </Link>
+          </div>
+        </div>
+      ) : null}
 
       <div className="absolute bottom-0 left-0 h-[2px] w-full bg-transparent">
         <div

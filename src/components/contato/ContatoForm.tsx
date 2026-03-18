@@ -49,8 +49,8 @@ export function ContatoForm() {
 
   return (
     <main className="w-full">
-      <form onSubmit={handleSubmit} className="grid items-center justify-center gap-6">
-        <h2 className={`${inter.className} text-[48px] font-[600] leading-tight tracking-[-0.02em] text-black`}>
+      <form onSubmit={handleSubmit} className="mx-auto grid w-full max-w-[720px] items-center gap-5 rounded-3xl border border-white/60 bg-white/55 p-6 shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur dark:border-slate-700 dark:bg-slate-900/75 dark:shadow-[0_18px_40px_rgba(0,0,0,0.35)] md:p-8">
+        <h2 className={`${inter.className} text-[40px] font-[600] leading-tight tracking-[-0.02em] text-slate-900 dark:text-slate-100 md:text-[48px]`}>
           Envie sua mensagem
         </h2>
 
@@ -60,7 +60,7 @@ export function ContatoForm() {
             placeholder="Seu email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-white p-3 text-black outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-[var(--safri-red)] focus:ring-4 focus:ring-red-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-red-900/50"
             required
           />
 
@@ -69,7 +69,7 @@ export function ContatoForm() {
             placeholder="Nome"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-white p-3 text-black outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-[var(--safri-red)] focus:ring-4 focus:ring-red-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-red-900/50"
             required
           />
 
@@ -78,7 +78,7 @@ export function ContatoForm() {
             placeholder="Company"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="w-full bg-white p-3 text-black outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-[var(--safri-red)] focus:ring-4 focus:ring-red-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-red-900/50"
             required
           />
 
@@ -87,7 +87,7 @@ export function ContatoForm() {
             placeholder="Assunto"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full bg-white p-3 text-black outline-none"
+            className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-[var(--safri-red)] focus:ring-4 focus:ring-red-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-red-900/50"
             required
           />
         </div>
@@ -97,7 +97,7 @@ export function ContatoForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={5}
-          className="w-full bg-white p-3 text-black outline-none"
+          className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-[var(--safri-red)] focus:ring-4 focus:ring-red-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:focus:ring-red-900/50"
           required
         />
 
@@ -106,8 +106,10 @@ export function ContatoForm() {
             type="submit"
             className={`
               ${inter.className}
-              w-1/2 bg-black py-3 text-[12px] font-[600] leading-tight tracking-[-0.02em] text-white
-              transition-all duration-300 hover:bg-gray-300 hover:text-red-700
+              w-full rounded-xl bg-slate-900 px-6 py-3 text-[13px] font-[600] leading-tight tracking-[-0.02em] text-white
+              transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--safri-red)]
+              dark:bg-[var(--safri-red)] dark:hover:bg-[var(--safri-red-dark)]
+              md:w-auto
               ${loading ? "cursor-not-allowed opacity-70" : ""}
             `}
             disabled={loading}
@@ -127,7 +129,7 @@ export function ContatoForm() {
         ) : null}
       </form>
 
-      <span className="mt-4 inline-block text-black">Se preferir ligar...00244 248 200 287</span>
+      <span className="mt-4 inline-block text-sm font-medium text-slate-700 dark:text-slate-300">Se preferir ligar: +244 248 200 287</span>
     </main>
   );
 }
