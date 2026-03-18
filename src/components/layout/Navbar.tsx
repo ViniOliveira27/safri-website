@@ -1,52 +1,97 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Building2, ChevronDown, Factory, Handshake, Landmark, Truck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Navbar() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const y = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? (y / total) * 100 : 0);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--card-border)] bg-[var(--background)]/95 backdrop-blur-lg">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 md:px-6">
+    <header className="sticky top-0 z-50 border-b border-white/25 bg-[var(--background)]/72 shadow-[0_14px_42px_rgba(8,16,32,0.16)] backdrop-blur-2xl transition-all duration-500">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2.5 transition-all duration-500 md:px-8">
         <Link href="/" className="group inline-flex items-center gap-2">
-          <Image 
-            src="/logo.png" 
-            alt="SAFRI Comercial Logo" 
+          <Image
+            src="/logo.png"
+            alt="SAFRI Comercial Logo"
             width={220}
             height={80}
-            className="h-14 w-auto rounded-sm"
+            className="h-12 w-auto rounded-sm transition-all duration-500"
             priority
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm font-semibold text-[var(--text-secondary)] md:flex">
-          <Link href="/#sobre" className="transition hover:text-[var(--foreground)]">
-            Sobre
+        <nav className="hidden items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] lg:flex">
+          <Link
+            href="/"
+            className="rounded-full px-4 py-2.5 transition hover:bg-white/65 hover:text-[var(--foreground)]"
+          >
+            Home
           </Link>
-          <Link href="/#servicos" className="transition hover:text-[var(--foreground)]">
-            Serviços
-          </Link>
-          <Link href="/#direcao" className="transition hover:text-[var(--foreground)]">
-            Direção
-          </Link>
-          <Link href="/#banners" className="transition hover:text-[var(--foreground)]">
-            Mídia
-          </Link>
+
+          <div className="group relative">
+            <button className="inline-flex items-center gap-1 rounded-full px-4 py-2.5 transition hover:bg-white/65 hover:text-[var(--foreground)]">
+              Empresa
+              <ChevronDown className="h-4 w-4" />
+            </button>
+            <div className="pointer-events-none absolute left-0 top-full z-30 w-72 pt-3 opacity-0 transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div className="translate-y-2 rounded-2xl border border-[var(--card-border)] bg-[var(--off-white)]/95 p-3 shadow-2xl backdrop-blur transition duration-300 group-hover:translate-y-0">
+                <Link href="/#sobre" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Sobre Nós</Link>
+                <Link href="/#direcao" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Diretoria</Link>
+                <Link href="/#banners" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Galeria</Link>
+                <Link href="/contato" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Contacto</Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative">
+            <button className="inline-flex items-center gap-1 rounded-full px-4 py-2.5 transition hover:bg-white/65 hover:text-[var(--foreground)]">
+              Serviços
+              <ChevronDown className="h-4 w-4" />
+            </button>
+            <div className="pointer-events-none absolute left-1/2 top-full z-30 w-[620px] -translate-x-1/2 pt-3 opacity-0 transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div className="translate-y-2 rounded-2xl border border-[var(--card-border)] bg-[var(--off-white)]/95 p-5 shadow-2xl backdrop-blur transition duration-300 group-hover:translate-y-0">
+                <div className="grid grid-cols-2 gap-3 text-[var(--text-secondary)]">
+                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Building2 className="h-4 w-4" /> Comércio & Fornecimento</Link>
+                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Truck className="h-4 w-4" /> Logística & Transportes</Link>
+                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Factory className="h-4 w-4" /> Indústria (SAFRI-METAL)</Link>
+                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Landmark className="h-4 w-4" /> Projeto Educacional</Link>
+                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Wrench className="h-4 w-4" /> Soluções Técnicas</Link>
+                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Handshake className="h-4 w-4" /> Parcerias Estratégicas</Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <ThemeToggle />
-          <a
-            href="https://wa.me/244248200287"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden rounded-lg border border-[var(--safri-red)] px-4 py-2 text-sm font-semibold text-[var(--safri-red)] transition hover:-translate-y-0.5 hover:bg-[var(--safri-red)] hover:text-white md:inline-flex"
-          >
-            WhatsApp
-          </a>
           <Link href="/contato">
-            <Button>Fale Conosco</Button>
+            <Button className="rounded-full bg-[#024f3c] px-7 shadow-lg shadow-[#024f3c]/30 transition hover:-translate-y-0.5 hover:bg-[#03624a]">Solicitar Proposta</Button>
           </Link>
         </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 h-[2px] w-full bg-transparent">
+        <div
+          className="h-full bg-gradient-to-r from-[var(--safri-red)] via-[var(--safri-blue)] to-[var(--accent)] transition-[width] duration-200"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
     </header>
   );

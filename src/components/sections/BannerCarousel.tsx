@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 type BannerItem = {
   label: string;
@@ -16,40 +17,40 @@ type BannerItem = {
 const banners: BannerItem[] = [
   {
     label: "Destaque Institucional",
-    title: "Portfólio Multissetorial com Solidez de +25 anos",
-    subtitle: "Soluções em comércio, logística, indústria e agronegócio para todo o mercado angolano.",
+    title: "Liderança com foco em crescimento sustentável",
+    subtitle: "Gestão experiente para expansão multissetorial e desenvolvimento estratégico em Angola.",
     cta: "Solicitar apresentação comercial",
     image: "/banners/used/leadership-team.jpg",
     gradient: "from-[var(--safri-red)]/20 via-transparent to-[var(--safri-blue)]/20",
   },
   {
-    label: "Expansão de Negócios",
-    title: "Infraestrutura, transporte e distribuição para grandes operações",
-    subtitle: "Atendemos B2B e B2C com capacidade operacional em várias províncias.",
+    label: "Infraestrutura",
+    title: "Capacidade operacional para grandes projetos",
+    subtitle: "Estrutura preparada para produção, armazenamento e logística em escala.",
     cta: "Falar com equipe de vendas",
     image: "/banners/used/warehouse-operations.jpg",
     gradient: "from-[var(--safri-blue)]/20 via-transparent to-[var(--safri-red)]/20",
   },
   {
-    label: "Parcerias Estratégicas",
-    title: "Projetos com foco em crescimento sustentável em Angola",
-    subtitle: "Construímos relações de longo prazo com eficiência, transparência e resultados.",
+    label: "Operações",
+    title: "Operação integrada para eficiência e performance",
+    subtitle: "Atuação coordenada entre unidades para cumprir prazos e elevar resultados.",
     cta: "Agendar reunião",
-    image: "/banners/used/africa-network.jpg",
+    image: "/banners/used/metal-fabrication.jpg",
     gradient: "from-[var(--accent)]/20 via-transparent to-[var(--safri-blue)]/20",
   },
   {
-    label: "Operação Industrial",
-    title: "Capacidade técnica para fabricação metálica e projetos de infraestrutura",
-    subtitle: "Qualidade, produtividade e compromisso com prazos para grandes demandas.",
+    label: "Expansão",
+    title: "Presença crescente e visão de longo prazo",
+    subtitle: "Construindo oportunidades com responsabilidade e impacto econômico positivo.",
     cta: "Conhecer capacidade industrial",
-    image: "/banners/used/metal-fabrication.jpg",
+    image: "/banners/used/africa-network.jpg",
     gradient: "from-[var(--safri-red)]/20 via-transparent to-[var(--accent)]/20",
   },
   {
-    label: "Agro-Pecuária",
-    title: "Tecnologia no campo para uma produção mais eficiente e sustentável",
-    subtitle: "Integração de inovação, monitoramento e escala operacional no setor agrícola.",
+    label: "Parcerias",
+    title: "Conexões estratégicas para novos mercados",
+    subtitle: "Atuação integrada entre gestão, operação e relacionamento institucional.",
     cta: "Ver soluções agro",
     image: "/banners/used/agro-drone.jpg",
     gradient: "from-[var(--accent)]/20 via-transparent to-[var(--safri-blue)]/20",
@@ -58,11 +59,12 @@ const banners: BannerItem[] = [
 
 export function BannerCarousel() {
   const [current, setCurrent] = useState(0);
+  const progress = ((current + 1) / banners.length) * 100;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % banners.length);
-    }, 5000);
+    }, 6200);
     return () => clearInterval(interval);
   }, []);
 
@@ -70,25 +72,76 @@ export function BannerCarousel() {
   const prev = () => setCurrent((prev) => (prev - 1 + banners.length) % banners.length);
 
   return (
-    <section id="banners" className="py-12">
+    <section id="banners" className="py-14">
       <div className="mx-auto w-full max-w-6xl px-4 md:px-6">
-        <p className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--safri-red-light)]">Espaço para Mídia</p>
-        <h2 className="mt-2 text-3xl font-extrabold text-[var(--foreground)] md:text-4xl">Banners institucionais</h2>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: 0.42 }}
+          className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--safri-red-light)]"
+        >
+          Espaço para Mídia
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: 0.48, delay: 0.04 }}
+          className="mt-2 text-3xl font-extrabold text-[var(--foreground)] md:text-4xl"
+        >
+          Banners institucionais
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: 0.5, delay: 0.07 }}
+          className="mt-3 max-w-3xl text-sm leading-7 text-[var(--text-secondary)] md:text-base"
+        >
+          Conteudo visual da SAFRI com foco em capacidade operacional, liderança e expansão.
+        </motion.p>
 
-        <div className="relative mt-8 overflow-hidden rounded-3xl border border-[var(--card-border)] bg-[var(--off-white)] shadow-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.985 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.16 }}
+          transition={{ duration: 0.64, ease: [0.22, 1, 0.36, 1] }}
+          className="relative mt-8 overflow-hidden rounded-3xl border border-[var(--card-border)] bg-[var(--off-white)] shadow-[0_26px_54px_rgba(13,24,42,0.22)]"
+        >
           <div className="relative aspect-[16/9] w-full">
-            <Image
-              src={banners[current].image}
-              alt={banners[current].title}
-              fill
-              priority={current === 0}
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20" />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={banners[current].image}
+                initial={{ opacity: 0, scale: 1.06 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.03 }}
+                transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={banners[current].image}
+                  alt={banners[current].title}
+                  fill
+                  priority={current === 0}
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/82 via-black/52 to-black/25" />
             <div className={`absolute inset-0 bg-gradient-to-br ${banners[current].gradient}`} />
+            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white/8 to-transparent" />
 
             <div className="relative z-10 flex h-full items-end p-6 md:p-10">
-              <div className="max-w-3xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={banners[current].title}
+                  initial={{ opacity: 0, y: 18, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, y: -12, filter: "blur(4px)" }}
+                  transition={{ duration: 0.38 }}
+                  className="max-w-3xl"
+                >
                 <p className="inline-flex rounded-full border border-white/30 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-white">
                   {banners[current].label}
                 </p>
@@ -98,14 +151,19 @@ export function BannerCarousel() {
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-200 md:text-base">
                   {banners[current].subtitle}
                 </p>
-                <p className="mt-5 inline-flex rounded-lg bg-[var(--safri-red)] px-4 py-2 text-sm font-bold text-white shadow-lg">
+                <p className="mt-5 inline-flex rounded-lg border border-white/20 bg-[var(--safri-red)] px-4 py-2 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[var(--safri-red-dark)]">
                   {banners[current].cta}
                 </p>
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
             <div className="absolute bottom-0 left-0 h-1 w-full bg-white/20">
-              <div className="h-full w-1/3 bg-[var(--safri-red-light)]" key={current} />
+              <motion.div
+                className="h-full bg-[var(--safri-red-light)]"
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 0.32 }}
+              />
             </div>
           </div>
 
@@ -124,17 +182,23 @@ export function BannerCarousel() {
           >
             <ChevronRight className="h-5 w-5" />
           </button>
-        </div>
+        </motion.div>
 
-        <div className="mt-4 grid grid-cols-5 gap-2 md:gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: 0.45, delay: 0.05 }}
+          className="mt-4 grid grid-cols-5 gap-2 md:gap-3"
+        >
           {banners.map((banner, index) => (
             <button
               key={banner.title}
               onClick={() => setCurrent(index)}
               className={`relative overflow-hidden rounded-xl border transition ${
                 index === current
-                  ? "border-[var(--safri-red-light)] shadow-lg"
-                  : "border-[var(--card-border)] opacity-70 hover:opacity-100"
+                  ? "border-[var(--safri-red-light)] shadow-lg shadow-[var(--safri-red)]/20"
+                  : "border-[var(--card-border)] opacity-70 hover:-translate-y-0.5 hover:opacity-100 hover:shadow-lg"
               }`}
               aria-label={`Ir para slide ${index + 1}`}
             >
@@ -144,7 +208,7 @@ export function BannerCarousel() {
               </div>
             </button>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

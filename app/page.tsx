@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/sections/AboutSection";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { CeoMessage } from "@/components/sections/CeoMessage";
 import { MetricsSection } from "@/components/sections/MetricsSection";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -36,11 +37,21 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
       <HeroSection />
-      <BannerCarousel />
-      <AboutSection />
-      <ServicesGrid />
-      <CeoMessage />
-      <MetricsSection />
+      <ScrollReveal>
+        <BannerCarousel />
+      </ScrollReveal>
+      <ScrollReveal delay={0.05}>
+        <AboutSection />
+      </ScrollReveal>
+      <ScrollReveal delay={0.08}>
+        <ServicesGrid />
+      </ScrollReveal>
+      <ScrollReveal delay={0.1}>
+        <CeoMessage />
+      </ScrollReveal>
+      <ScrollReveal delay={0.12}>
+        <MetricsSection />
+      </ScrollReveal>
     </main>
   );
 }
