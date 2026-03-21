@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -72,6 +73,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <WhatsAppFloat />
         <CookieConsent />
       </body>
     </html>

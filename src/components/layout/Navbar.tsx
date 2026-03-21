@@ -59,9 +59,10 @@ export function Navbar() {
             </button>
             <div className="pointer-events-none absolute left-0 top-full z-30 w-72 pt-3 opacity-0 transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
               <div className="translate-y-2 rounded-2xl border border-[var(--card-border)] bg-[var(--off-white)]/95 p-3 shadow-2xl backdrop-blur transition duration-300 group-hover:translate-y-0">
-                <Link href="/#sobre" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Sobre Nós</Link>
-                <Link href="/#direcao" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Diretoria</Link>
-                <Link href="/#banners" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Galeria</Link>
+                <Link href="/sobre" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Sobre Nós</Link>
+                <Link href="/sobre#direcao" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Diretoria</Link>
+                <Link href="/projetos" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Projetos</Link>
+                <Link href="/galeria" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Galeria</Link>
                 <Link href="/contato" className="block rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">Contacto</Link>
               </div>
             </div>
@@ -75,12 +76,12 @@ export function Navbar() {
             <div className="pointer-events-none absolute left-1/2 top-full z-30 w-[620px] -translate-x-1/2 pt-3 opacity-0 transition duration-300 group-hover:pointer-events-auto group-hover:opacity-100">
               <div className="translate-y-2 rounded-2xl border border-[var(--card-border)] bg-[var(--off-white)]/95 p-5 shadow-2xl backdrop-blur transition duration-300 group-hover:translate-y-0">
                 <div className="grid grid-cols-2 gap-3 text-[var(--text-secondary)]">
-                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Building2 className="h-4 w-4" /> Comércio & Fornecimento</Link>
-                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Truck className="h-4 w-4" /> Logística & Transportes</Link>
-                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Factory className="h-4 w-4" /> Indústria (SAFRI-METAL)</Link>
-                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Landmark className="h-4 w-4" /> Projeto Educacional</Link>
-                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Wrench className="h-4 w-4" /> Soluções Técnicas</Link>
-                  <Link href="/#servicos" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Handshake className="h-4 w-4" /> Parcerias Estratégicas</Link>
+                  <Link href="/arrows" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Building2 className="h-4 w-4" /> Comércio & Fornecimento</Link>
+                  <Link href="/arrows" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Truck className="h-4 w-4" /> Logística & Transportes</Link>
+                  <Link href="/arrows" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Factory className="h-4 w-4" /> Indústria (SAFRI-METAL)</Link>
+                  <Link href="/arrows" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Landmark className="h-4 w-4" /> Projeto Educacional</Link>
+                  <Link href="/arrows" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Wrench className="h-4 w-4" /> Soluções Técnicas</Link>
+                  <Link href="/arrows" className="flex items-center gap-2 rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]"><Handshake className="h-4 w-4" /> Parcerias Estratégicas</Link>
                 </div>
               </div>
             </div>
@@ -111,14 +112,20 @@ export function Navbar() {
               <Link href="/" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
                 Home
               </Link>
-              <Link href="/#sobre" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+              <Link href="/sobre" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
                 Sobre Nós
               </Link>
-              <Link href="/#servicos" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
-                Serviços
+              <Link href="/arrows" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Arrows
               </Link>
-              <Link href="/#direcao" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
-                Diretoria
+              <Link href="/areas" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Áreas
+              </Link>
+              <Link href="/projetos" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Projetos
+              </Link>
+              <Link href="/galeria" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
+                Galeria
               </Link>
               <Link href="/contato" onClick={() => setMobileMenuOpen(false)} className="rounded-xl px-3 py-2.5 transition hover:bg-[var(--background-alt)] hover:text-[var(--foreground)]">
                 Contato

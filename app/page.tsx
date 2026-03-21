@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { BannerCarousel } from "@/components/sections/BannerCarousel";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { CeoMessage } from "@/components/sections/CeoMessage";
-import { MetricsSection } from "@/components/sections/MetricsSection";
-import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { Hero } from "@/components/sections/hero";
+import { AboutPreview } from "@/components/sections/about-preview";
+import { BusinessAreas } from "@/components/sections/business-areas";
+import { Differentiators } from "@/components/sections/differentiators";
+import { Cta } from "@/components/sections/cta";
 
 export const metadata: Metadata = {
   title: "Home",
   description:
-    "Conheça a SAFRI Comercial, Lda.: mais de 25 anos de experiência com atuação em comércio, logística, indústria, educação e agro-pecuária.",
+    "Home estratégica da SAFRI Comercial com resumo das principais páginas, CTAs de alto impacto e rotas orientadas para geração de leads em Angola.",
+  keywords: [
+    "SAFRI Comercial",
+    "empresa em Angola",
+    "comércio e logística",
+    "serviços industriais",
+    "projetos empresariais",
+    "captação de leads",
+    "contato comercial",
+  ],
+  openGraph: {
+    title: "SAFRI Comercial | Home Estratégica",
+    description:
+      "Resumo completo das áreas, projetos e páginas da SAFRI com foco em geração de oportunidades comerciais.",
+    url: "https://www.safri.co.ao",
+    type: "website",
+  },
 };
 
 const organizationJsonLd = {
@@ -29,6 +43,26 @@ const organizationJsonLd = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "SAFRI Comercial, Lda.",
+  url: "https://www.safri.co.ao",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://www.safri.co.ao/contato",
+    "query-input": "required name=lead",
+  },
+  hasPart: [
+    { "@type": "WebPage", name: "Sobre", url: "https://www.safri.co.ao/sobre" },
+    { "@type": "WebPage", name: "Arrows", url: "https://www.safri.co.ao/arrows" },
+    { "@type": "WebPage", name: "Áreas", url: "https://www.safri.co.ao/areas" },
+    { "@type": "WebPage", name: "Projetos", url: "https://www.safri.co.ao/projetos" },
+    { "@type": "WebPage", name: "Galeria", url: "https://www.safri.co.ao/galeria" },
+    { "@type": "WebPage", name: "Contato", url: "https://www.safri.co.ao/contato" },
+  ],
+};
+
 export default function Home() {
   return (
     <main>
@@ -36,22 +70,15 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
-      <HeroSection />
-      <ScrollReveal>
-        <BannerCarousel />
-      </ScrollReveal>
-      <ScrollReveal delay={0.05}>
-        <AboutSection />
-      </ScrollReveal>
-      <ScrollReveal delay={0.08}>
-        <ServicesGrid />
-      </ScrollReveal>
-      <ScrollReveal delay={0.1}>
-        <CeoMessage />
-      </ScrollReveal>
-      <ScrollReveal delay={0.12}>
-        <MetricsSection />
-      </ScrollReveal>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <Hero />
+      <AboutPreview />
+      <BusinessAreas />
+      <Differentiators />
+      <Cta />
     </main>
   );
 }
